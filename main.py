@@ -22,8 +22,8 @@ while run == True:
         continue; 
     elif validNumber(input):
         print "You will receive a text when the coffee is ready"
-        time.sleep(10)
-        message = client.messages.create(to=input, from_=TWILIO_SANDBOX_NUMBER, body="Coffee is ready " + str(time.time()))
+        #time.sleep(10)
+        message = client.messages.create(to=input, from_=TWILIO_NUMBER, body="Coffee is ready - " + "{:%Y-%m-%d %H:%M:%S}".format(datetime.now()))
         print message.sid
     else: 
         print "Please enter a valid phone number"
