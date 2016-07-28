@@ -2,6 +2,11 @@
 from datetime import datetime
 import re
 
+import Adafruit_CharLCD as LCD
+
+# Initialize the LCD using the pins
+lcd = LCD.Adafruit_CharLCDPlate()
+
 from tokens import *
 from twilio.rest import TwilioRestClient
 
@@ -15,7 +20,10 @@ client = TwilioRestClient(account, token)
 
 run = True; 
 
+lcd.clear() 
+
 while run == True:
+    lcd.message("What is your phone number?: ")
     input = raw_input("What is your phone number?: ")
     if input == "q":
         run = False; 
