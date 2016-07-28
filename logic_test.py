@@ -18,8 +18,9 @@ run = True;
 
 while run == True:
     lcd.message("What is your phone number?: ")
-    
+    input = ""
     while validNumber(input) != True or len(input) > 11:
+        input = raw_input("Next number: ")
         lcd.clear()
         lcd.message(input)
 
