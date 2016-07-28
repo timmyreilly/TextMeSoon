@@ -14,6 +14,8 @@ def validNumber(phone_number):
 
 lcd.clear()
 
+run = True; 
+
 while run == True:
     lcd.message("What is your phone number?: ")
     
@@ -27,8 +29,8 @@ while run == True:
     elif validNumber(input):
         print "You will receive a text when the coffee is ready"
         #time.sleep(10)
-        message = client.messages.create(to=input, from_=TWILIO_NUMBER, body="Coffee is ready - " + "{:%Y-%m-%d %H:%M:%S}".format(datetime.now()))
-        print message.sid
+        #message = client.messages.create(to=input, from_=TWILIO_NUMBER, body="Coffee is ready - " + "{:%Y-%m-%d %H:%M:%S}".format(datetime.now()))
+        #print message.sid
     else: 
         print "Please enter a valid phone number"
 
