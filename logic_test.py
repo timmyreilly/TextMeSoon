@@ -7,24 +7,20 @@ import Adafruit_CharLCD as LCD
 # Initialize the LCD using the pins
 lcd = LCD.Adafruit_CharLCDPlate()
 
-from tokens import *
-from twilio.rest import TwilioRestClient
-
 def validNumber(phone_number):
     pattern = re.compile("(\d{3}[-\.\s]??\d{3}[-\.\s]??\d{4}|\(\d{3}\)\s*\d{3}[-\.\s]??\d{4}|\d{3}[-\.\s]??\d{4})", re.IGNORECASE)
     return pattern.match(phone_number) is not None
 
-account = ACCOUNT_SID
-token = AUTH_TOKEN
-client = TwilioRestClient(account, token)
 
-run = True; 
-
-lcd.clear() 
+lcd.clear()
 
 while run == True:
     lcd.message("What is your phone number?: ")
-    input = raw_input("What is your phone number?: ")
+    
+    while validNumber(input) != True or len(input) > 11:
+        lcd.clear()
+        lcd.message(input)
+
     if input == "q":
         run = False; 
         continue; 
@@ -36,9 +32,7 @@ while run == True:
     else: 
         print "Please enter a valid phone number"
 
-lcd.clear()
-
-
+lcd.clear()     
 
 
 
