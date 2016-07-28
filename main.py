@@ -24,6 +24,7 @@ run = True;
 lcd.clear() 
 
 while run == True:
+    lcd.clear()  
     lcd.message("Phone number?: ")
     input = raw_input("What is your phone number?: ")
     if input == "q":
