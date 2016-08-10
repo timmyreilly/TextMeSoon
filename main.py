@@ -28,8 +28,9 @@ while run == True:
     lcd.message("Phone number?: ")
     input = raw_input("What is your phone number?: ")
     if input == "q":
+        lcd.clear() 
         lcd.message("Quitting")
-        time.slee(0.5)
+        time.sleep(0.5)
         lcd.clear()
         run = False; 
         continue; 
@@ -40,6 +41,7 @@ while run == True:
         lcd.message("We'll text when ready")
         message = client.messages.create(to=input, from_=TWILIO_NUMBER, body="Coffee is ready - " + "{:%Y-%m-%d %H:%M:%S}".format(datetime.now()))
         print message.sid
+        lcd.clear()
     else: 
         lcd.clear()
         print "Invalid Number please try again"
